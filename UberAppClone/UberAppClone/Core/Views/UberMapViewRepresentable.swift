@@ -11,6 +11,7 @@ import MapKit
 struct UberMapViewRepresentable: UIViewRepresentable {
     
     let MapView = MKMapView()
+    let locationManager = LocationManager()
     
     func makeUIView(context: Context) -> some UIView {
         MapView.isRotateEnabled = false
