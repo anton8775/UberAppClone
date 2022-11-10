@@ -10,17 +10,17 @@ import MapKit
 
 struct UberMapViewRepresentable: UIViewRepresentable {
     
-    let MapView = MKMapView()
+    let mapView = MKMapView()
     let locationManager = LocationManager()
     @EnvironmentObject var locationViewModel: LocationSearchViewModel
     
     func makeUIView(context: Context) -> some UIView {
-        MapView.delegate = context.coordinator
-        MapView.isRotateEnabled = false
-        MapView.showsUserLocation = true
-        MapView.userTrackingMode = .follow
+        mapView.delegate = context.coordinator
+        mapView.isRotateEnabled = false
+        mapView.showsUserLocation = true
+        mapView.userTrackingMode = .follow
         
-        return MapView
+        return mapView
     }
     
     func updateUIView(_ uiView: UIViewType, context: Context) {
@@ -49,18 +49,18 @@ extension UberMapViewRepresentable {
                                                longitude: userLocation.coordinate.longitude),
                 span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
             
-            parent.MapView.setRegion(region, animated: true)
+            parent.mapView.setRegion(region, animated: true)
         }
         
         func addAndSelectAnnotation(withCoordinate coordinate: CLLocationCoordinate2D){
-            parent.MapView.removeAnnotation(parent.MapView.annotations as! MKAnnotation)
+            parent.mapView.removeAnnotations(parent.mapView.annotations)
             
             let anno = MKPointAnnotation()
             anno.coordinate = coordinate
-            self.parent.MapView.addAnnotation(anno)
-            self.parent.MapView.selectAnnotation(anno, animated: true)
+            self.parent.mapView.addAnnotation(anno)
+            self.parent.mapView.selectAnnotation(anno, animated: true)
             
-            parent.MapView.showAnnotations(parent.MapView.annotations, animated: true)
+            parent.mapView.showAnnotations(parent.mapView.annotations, animated: true)
         }
     }
 }
