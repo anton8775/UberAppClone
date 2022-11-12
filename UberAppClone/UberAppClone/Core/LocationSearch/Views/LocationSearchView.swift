@@ -14,7 +14,7 @@ struct LocationSearchView: View {
     
     var body: some View {
         VStack{
-            // header view
+            // Header view
             HStack{
                 VStack{
                     Circle()
@@ -43,7 +43,7 @@ struct LocationSearchView: View {
             Divider()
                 .padding(.vertical)
             
-            // list view
+            // List view
             ScrollView{
                 VStack(alignment: .leading){
                     ForEach(viewModel.results, id: \.self) {result in
