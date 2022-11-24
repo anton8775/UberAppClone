@@ -13,7 +13,7 @@ struct RideRequestView: View {
             Capsule()
                 .foregroundColor(Color(.systemOrange))
                 .frame(width: 48, height: 6)
-            // Make Debug
+            // Make Debuging
             HStack{
                 VStack{
                     Circle()
