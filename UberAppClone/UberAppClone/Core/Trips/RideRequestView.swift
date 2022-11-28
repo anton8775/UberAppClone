@@ -13,8 +13,9 @@ struct RideRequestView: View {
             Capsule()
                 .foregroundColor(Color(.systemOrange))
                 .frame(width: 48, height: 6)
-            // Make Debuging
+            
             HStack{
+                
                 VStack{
                     Circle()
                         .fill(Color(.systemGray2))
@@ -26,10 +27,11 @@ struct RideRequestView: View {
                         .fill(Color(.black))
                         .frame(width: 8, height: 8)
                 }
+                
                 VStack(alignment: .leading, spacing: 24){
                     HStack{
                         Text("Current location")
-                            .font(.system(size: 16))
+                            .font(.system(size: 16, weight: .semibold))
                             .foregroundColor(.gray)
                         
                         Spacer()
@@ -41,45 +43,84 @@ struct RideRequestView: View {
                     
                     HStack{
                         Text("Taras Shevcheko University")
-                            .font(.system(size: 16))
-                            .foregroundColor(.gray)
+                            .font(.system(size: 16, weight: .semibold))
                         
                         Spacer()
                         
                         Text("13:55")
                             .font(.system(size: 14, weight: .semibold))
                             .foregroundColor(.gray)
-                    } .padding(.bottom, 10)
+                    }
+                } .padding(.leading, 6)
+            } .padding()
+            Divider()
+            
+            Text("SUGGESTED RIDES")
+                .font(.subheadline)
+                .fontWeight(.semibold)
+                .padding()
+                .foregroundColor(.orange)
+            
+            ScrollView(.horizontal){
+                HStack(spacing: 12){
+                    ForEach(0..<3, id: \.self) {_ in
+                        VStack(alignment: .leading){
+                            Image("uber-x")
+                                .resizable()
+                                .scaledToFit()
+                            VStack(spacing: 4){
+                                Text("UberX")
+                                    .font(.system(size: 14, weight: .semibold))
+                                Text("45 UAH")
+                                    .font(.system(size: 12))
+                            }.padding(8)
+                        }
+                        .frame(width: 112, height: 140)
+                        .background(Color(.systemGroupedBackground))
+                        .cornerRadius(10)
+                        
+                    }
                 }
-          }
-        }
-        
-        HStack{
-            VStack{
-                Circle()
-                    .fill(Color(.systemGray2))
-                    .frame(width: 8, height: 8)
-                Rectangle()
-                    .fill(Color(.systemGray2))
-                    .frame(width: 1, height: 32)
-                Rectangle()
-                    .fill(Color(.black))
-                    .frame(width: 8, height: 8)
+                
+            }.padding(.horizontal)
+            Divider()
+                .padding(.vertical, 8)
+            
+            HStack(spacing: 12){
+                Text("Visa")
+                    .font(.subheadline)
+                    .fontWeight(.semibold)
+                    .padding(6)
+                    .background(.orange)
+                    .cornerRadius(4)
+                    .foregroundColor(.white)
+                    .padding(.leading)
+                Text("**** 7857")
+                    .fontWeight(.bold)
+                
+                Spacer()
+                
+                Image(systemName: "chevron.right")
+                    .imageScale(.medium)
+                    .padding()
             }
-            VStack{
-                HStack{
-                    Text("Current location")
-                        .font(.system(size: 16))
-                        .foregroundColor(.gray)
-                    
-                    Spacer()
-                    
-                    Text("13:40")
-                        .font(.system(size: 14, weight: .semibold))
-                        .foregroundColor(.gray)
-                } .padding(.bottom, 10)
+            .frame(height: 50)
+            .background(Color(.systemGroupedBackground))
+            .cornerRadius(10)
+            .padding(.horizontal)
+            
+            Button{
+                
+            }label: {
+                Text("CONFIRM RIDE")
+                    .fontWeight(.bold)
+                    .frame(width: UIScreen.main.bounds.width - 32, height: 50)
+                    .background(.orange)
+                    .cornerRadius(10)
+                    .foregroundColor(.white)
             }
-      } .padding()
+            
+        } .background(.white)
     }
 }
 
