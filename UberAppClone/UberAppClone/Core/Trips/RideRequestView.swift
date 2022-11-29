@@ -13,6 +13,7 @@ struct RideRequestView: View {
             Capsule()
                 .foregroundColor(Color(.systemOrange))
                 .frame(width: 48, height: 6)
+                .padding(.top, 8)
             
             HStack{
                 
@@ -120,7 +121,10 @@ struct RideRequestView: View {
                     .foregroundColor(.white)
             }
             
-        } .background(.white)
+        }
+        .padding(.bottom, 24)
+        .background(.white)
+        .cornerRadius(16)
     }
 }
 
